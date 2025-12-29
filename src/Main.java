@@ -13,9 +13,13 @@ void main() {
             Sum of numbers is %d
             ------------------------
             """;
-            var sum = 0;
+    var sum = 0;
+    var  templateForError = """
+            %s is not a number,
+            Please add correct number for loop, like (1,2,3,4,5);
+            """;
     if(!isNumber(numberStr)){
-        System.out.print("Please add correct number for loop, like (1,2,3,4,5):");
+        System.out.printf(templateForError,numberStr);
         main();
     }
     number = Integer.parseInt(numberStr);
