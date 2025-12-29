@@ -1,13 +1,35 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
-
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+    Scanner scanner = new Scanner(System.in); // Create a Scanner object
+    System.out.print("Please add number for loop: ");
+    var numberStr = scanner.nextLine();
+    var number = 0;
+            var templateForLoop =  """
+            %d) Num is %d, sum is %d
+            """;
+    var templateForOutput =  """
+            ------------------------
+            Sum of numbers is %d
+            ------------------------
+            """;
+            var sum = 0;
+    if(!isNumber(numberStr)){
+        System.out.print("Please add correct number for loop, like (1,2,3,4,5):");
+        main();
+    }
+    number = Integer.parseInt(numberStr);
+    for (int i = 1; i <= number; i++) {
+        sum = sum + i;
+        System.out.printf(templateForLoop,i,i,sum);
+    }
+    System.out.printf(templateForOutput,sum);
+}
+boolean isNumber (String numberStr){
+    try {
+        Integer.parseInt(numberStr);
+        return true;
+    } catch (NumberFormatException exception) {
+        return false;
     }
 }
